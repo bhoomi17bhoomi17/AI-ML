@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini AI Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* dark overlay to make chatbot visible */
+      z-index: 1;
+    }
+
+    .chat-container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+      padding: 30px;
+      width: 400px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #2575fc;
+      box-shadow: 0px 0px 8px rgba(37,117,252,0.5);
+    }
+
+    button {
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    .reply {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #444;
+      padding: 15px;
+      border-radius: 10px;
+      background: #f4f4f4;
+      min-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="chat-container">
+    <h2>💬 Mini AI Chatbot</h2>
+    <form method="POST">
+      <input type="text" name="message" placeholder="Type your question...">
+      <br>
+      <button type="submit">Ask</button>
+    </form>
+    <div class="reply">{{ reply }}</div>
+  </div>
+</body>
+</html>
