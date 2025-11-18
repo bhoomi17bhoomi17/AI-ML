@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Order Bill</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #8490ca, #ec79ea);
+            text-align: center;
+            padding: 50px;
+        }
+        .card {
+            display: inline-block;
+            background: #fff;
+            padding: 30px 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: left;
+            max-width: 520px;
+            width: 100%;
+        }
+        h1 { margin-top: 0; color:#333; }
+        .line { display:flex; justify-content:space-between; margin:10px 0; }
+        .muted { color:#666; font-size:0.95rem; }
+        .total { font-weight:700; font-size:1.25rem; margin-top:18px; }
+        .back { display:inline-block; margin-top:18px; padding:8px 14px; border-radius:8px; background:#ff7043; color:white; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <h1>🧾 Your Bill</h1>
+
+    <div class="card">
+        <p class="muted"><strong>Customer:</strong> {{ name }}</p>
+
+        <hr>
+
+        {% for it in line_items %}
+            <div class="line">
+                <div>
+                    <div><strong>{{ it.name }}</strong></div>
+                    <div class="muted">₹{{ it.unit_price }} × {{ it.qty }}</div>
+                </div>
+                <div>₹{{ it.subtotal }}</div>
+            </div>
+        {% endfor %}
+
+        <hr>
+
+        <div class="line total">
+            <div>Total</div>
+            <div>₹{{ total }}</div>
+        </div>
+
+        <a class="back" href="{{ url_for('home') }}">Place another order</a>
+    </div>
+</body>
+</html>
